@@ -1,35 +1,20 @@
-document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault();
+let firstSubmit = true;
 
-    try {
-        let name = document.getElementById("name").value.trim();
-        let email = document.getElementById("email").value.trim();
-        let age = document.getElementById("age").value;
-        let phone = document.getElementById("phone").value.trim();
-        let gender = document.querySelector('input[name="gender"]:checked');
+let form=document.getElementById("form");
+let part2=document.getElementById("part2");
+let captchaInput=document.getElementById("captcha");
 
-        if (name === "") throw "Name is required";
-        if (email === "") throw "Email is required";
-        if (age === "" || age <= 0) throw "Enter valid age";
-        if (phone.length !== 10) throw "Phone number must be 10 digits";
-        if (!gender) throw "Please select gender";
+form.onsubmit=function(e) {
+    e.preventDefault(); // stop page reload
 
-        document.getElementById("msg").innerHTML =
-            "<span style='color:green'>Registration Successful</span>";
-
-        document.getElementById("result").innerHTML = `
-            <h3>Student Details</h3>
-            <p><b>Name:</b> ${name}</p>
-            <p><b>Email:</b> ${email}</p>
-            <p><b>Age:</b> ${age}</p>
-            <p><b>Phone:</b> ${phone}</p>
-            <p><b>Gender:</b> ${gender.value}</p>
-        `;
-
-        document.getElementById("form").reset();
-
-    } catch (error) {
-        document.getElementById("msg").innerHTML =
-            "<span style='color:red'>" + error + "</span>";
+    if (firstSubmit){
+        part2.style.display="block";
+        firstSubmit=false;
+    }else{
+        if(captchaInput.value==="1234") {
+            alert("Submitted successfully");
+        }else{
+            alert("Invalid captcha");
+        }
     }
-});
+};

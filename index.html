@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Registration</title>
+    <title>Easy Captcha Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="box">
-    <h2>Student Registration</h2>
+<form id="form">
 
-    <form id="form">
-        <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email" placeholder="Email">
-        <input type="number" id="age" placeholder="Age">
-        <input type="tel" id="phone" placeholder="Phone Number">
-        <div class="gender">
-            <label>
-                <input type="radio" name="gender" value="Male"> Male
-            </label>
-            <label>
-                <input type="radio" name="gender" value="Female"> Female
-            </label>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-    <p id="msg"></p>
-    <div id="result"></div>
-</div>
+    <!-- First two inputs -->
+    <div id="part1">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Email" required>
+    </div>
+
+    <!-- Captcha part (hidden first) -->
+    <div id="part2">
+        <p>Captcha:1234</p>
+        <input type="text" id="captcha" placeholder="Enter captcha">
+        <input type="text" placeholder="Extra field">
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+
 <script src="script.js"></script>
 </body>
 </html>
